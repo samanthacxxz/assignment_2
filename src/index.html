@@ -12,16 +12,91 @@
 </head>
 <body>
     <header class="header-container">
-
+        <h1>Pharmacy Inventory Management System :)</h1>
     </header>
 
-    <form class="form-main-container">
+    <main>
+        <form class="form-container">
+            <h2>Register Medicine Data</h2>
+    
+            <label for="product-name">Product Name:</label>
+            <input type="text" name="product-name" class="product-name" required>
+    
+            <label for="product-id">Product ID:</label>
+            <input type="text" name="product-id" class="product-id" required>
+    
+            <label for="manufacturer">Manufacturer:</label>
+            <select name="manufacturer" class="manufacturer">
+                <option value="pfizer">Pfizer</option>
+                <option value="merck-and-co">Merck & Co.</option>
+                <option value="abbvie">AbbVie</option>
+                <option value="other">Other</option>
+            </select>
 
-    </form>
+            <label for="expiration-date">Expiration Date:</label>
+            <input type="datetime" name="expiration-date" class="expiration-date" required>
+    
+            <label for="quantity">Quantity:</label>
+            <input type="number" name="quantity" class="quantity" required>
+    
+            <button type="submit" class="submit-button">Register Medicine</button>
+        </form>
+    
+        <section class="medicine-display-container">
+            <div class="select-medicine-button-container">
+                <div class="select-manufactuer-section">
+                    <select name="select-manufacturer" class="select-manufacturer">
+                        <option value="pfizer">Pfizer</option>
+                        <option value="merck-and-co">Merck & Co.</option>
+                        <option value="abbvie">AbbVie</option>
+                        <option value="Other">Other</option>
+                    </select>
+                    <button>Display Manufacturer</button>
+                </div>
 
-    <section class="display-products-container">
+                <div class="input-product-name-section">
+                    <input type="text" name="select-product-name" class="select-product-name">
+                    <button>Display Products</button>
+                </div>
+            </div>
+            
+            <div class="render-medicine-container">
+                <div class="display-manufacturer-container">
+                    <header class="display-manufacturer-header">
+                        <span>Product Name</span>
+                        <span>Product ID</span>
+                        <span>Manufacturer</span>
+                        <span>Expiration Date</span>
+                        <span>Quantity</span>
+                        <span></span>
+                    </header>
 
-    </section>
+                    <ul class="manufacturer-list">
+
+                    </ul>
+                </div>
+
+                <div class="display-product-name-container">
+                    <header class="display-product-name-header">
+                        <span>Product Name</span>
+                        <span>Product ID</span>
+                        <span>Manufacturer</span>
+                        <span>Expiration Date</span>
+                        <span>Quantity</span>
+                        <span></span>
+                    </header>
+
+                    <ul class="product-name-list">
+
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+    </main>
+   
+
+
     <script src="./js/app.js"></script>
 </body>
 </html>
