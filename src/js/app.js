@@ -61,11 +61,13 @@ class ProductItem {
     };
 };
 
-
-
+/*class pfizerItem {
+    constructor(productName, productID, manufacturer, expirationDate, quantity)
+        super(productName, productID, manufacturer, expirationDate, quantity);
+}*/
 
 // DECLARE UI CLASS 
 
 class UI {
-
+    static activeTab = '';
 }
