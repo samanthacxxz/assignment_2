@@ -18,6 +18,11 @@ const displayMerckAndCoContainer = document.querySelector('.display-merck-and-co
 const displayAbbvieContainer = document.querySelector('.display-abbvie-container');
 const displayOtherContainer = document.querySelector('.display-other-container');
 
+const pfizerUl = document.querySelector('.pfizer-list');
+const merckAndCoUl = document.querySelector('.merck-and-co-list');
+const abbvieUl = document.querySelector('.abbvie-list');
+const otherUl = document.querySelector('.other-list');
+
 const submitButton = document.querySelector('.submit-button');
 
 
@@ -114,22 +119,57 @@ class OtherItem extends Item  {
 
 class UI {
     static activeTab = '';
+
     static renderPfizerItems() {
         displayPfizerContainer.style.display = "block";
         displayMerckAndCoContainer.style.display = "none";
         displayAbbvieContainer.style.display = "none";
         displayOtherContainer.style.display = "none";
 
+
+
         if (UI.activeTab === 'pfizer') {
             items.forEach((item) => {
-                const liRow = document.querySelector('li');
+                const liRow = document.createElement('li');
                 
-                const renderedProductName = document.querySelector('li');
-                const renderedProductID = document.querySelector('li');
-                const renderedManufacturer = document.querySelector('li');
-                const renderedExpirationDate = document.querySelector('li');
-                const renderedQuantity = document.querySelector('li');
+                const renderedProductName = document.createElement('span');
+                const renderedProductID = document.createElement('span');
+                const renderedManufacturer = document.createElement('span');
+                const renderedExpirationDate = document.createElement('span');
+                const renderedQuantity = document.createElement('span');
+                const deleteButtonContainer = document.createElement('span');
+
+                const deleteButton = document.createElement('span');
+
+                renderedProductName.textContent = item.productName;
+                renderedProductID.textContent = item.productID;
+                renderedManufacturer.textContent = item.manufacturer;
+                renderedExpirationDate.textContent = item.expirationDate;
+                renderedQuantity.textContent = item.quantity;
+                deleteButton.textContent = 'Delete X';
+
+                liRow.classList.add('pfizer-row');
+                deleteButton.classList.add('delete-button');
+
+                liRow.dataset.id = pfizer.ID;
+
+                pfizerUl.append(liRow);
+                liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity);
+                deleteButtonContainer.append(deletebutton);
+
             })
+        }
+    }
+
+    static renderMerckAndCoItems() {
+        displayPfizerContainer.style.display = "none";
+        displayMerckAndCoContainer.style.display = "block";
+        displayAbbvieContainer.style.display = "none";
+        displayOtherContainer.style.display = "none";
+
+
+        if (UI.activeTab = 'merck-and-co') {
+
         }
     }
 }
