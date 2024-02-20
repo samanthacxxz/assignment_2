@@ -129,7 +129,7 @@ class UI {
 
 
         if (UI.activeTab === 'pfizer') {
-            items.forEach((item) => {
+            pfizerItems.forEach((item) => {
                 const liRow = document.createElement('li');
                 
                 const renderedProductName = document.createElement('span');
