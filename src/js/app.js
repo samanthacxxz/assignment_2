@@ -217,7 +217,7 @@ class UI {
 
                 merckAndCoUl.append(liRow);
                 liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity);
-                deleteButtonContainer.append(deletebutton);
+                deleteButtonContainer.append(deleteButton);
 
             })
         }
@@ -255,7 +255,7 @@ class UI {
 
                 abbvieUl.append(liRow);
                 liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity);
-                deleteButtonContainer.append(deletebutton);
+                deleteButtonContainer.append(deleteButton);
 
             })
         }
@@ -293,7 +293,7 @@ class UI {
 
                 otherUl.append(liRow);
                 liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity);
-                deleteButtonContainer.append(deletebutton);
+                deleteButtonContainer.append(deleteButton);
 
             })
         }

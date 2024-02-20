@@ -50,6 +50,11 @@ main {
     background-color: antiquewhite;
 }
 
+.render-medicine-container {
+    display: flex;
+    flex-direction: column;
+}
+
 .display-pfizer-header,
 .display-merck-and-co-header,
 .display-abbvie-header,
@@ -62,6 +67,11 @@ main {
     border-radius: 0.5rem;
     margin-bottom: 0.5rem;
 }
+
+.display-pfizer-container {
+    flex-basis: 85%;
+    padding: 0 1rem;
+  }
 
 .display-merck-and-co-container,
 .display-abbvie-container,
@@ -81,6 +91,13 @@ main {
   background-color: darkgray;
 }
 
+.pfizer-row span {
+    flex-basis: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .delete-button {
     width: 6rem;
     height: 1.5rem;
@@ -88,4 +105,5 @@ main {
     cursor: pointer;
     border-radius: 0.25rem;
     border: none;
+    background-color: brown;
   }
