@@ -255,4 +255,42 @@ class UI {
             })
         }
     }
+    static renderOtherItems() {
+        displayPfizerContainer.style.display = "none";
+        displayMerckAndCoContainer.style.display = "none";
+        displayAbbvieContainer.style.display = "none";
+        displayOtherContainer.style.display = "block";
+
+        if (UI.activeTab === 'other') {
+            otherItems.forEach((otherItem) => {
+                const liRow = document.createElement('li');
+                
+                const renderedProductName = document.createElement('span');
+                const renderedProductID = document.createElement('span');
+                const renderedManufacturer = document.createElement('span');
+                const renderedExpirationDate = document.createElement('span');
+                const renderedQuantity = document.createElement('span');
+                const deleteButtonContainer = document.createElement('span');
+
+                const deleteButton = document.createElement('span');
+
+                renderedProductName.textContent = otherItem.productName;
+                renderedProductID.textContent = otherItem.productID;
+                renderedManufacturer.textContent = otherItem.manufacturer;
+                renderedExpirationDate.textContent = otherItem.expirationDate;
+                renderedQuantity.textContent = otherItem.quantity;
+                deleteButton.textContent = 'Delete X';
+
+                liRow.classList.add('other-row');
+                deleteButton.classList.add('delete-button');
+
+                liRow.dataset.id = other.ID;
+
+                otherUl.append(liRow);
+                liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity);
+                deleteButtonContainer.append(deletebutton);
+
+            })
+        }
+    }
 }
