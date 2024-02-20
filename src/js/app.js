@@ -36,7 +36,7 @@ medicineForm.addEventListener('submit', (e) => {
     let newItem;
     console.log(manufacturer.value);
     if (manufacturer.value === "pfizer") {
-        newItem = new Item (
+        newItem = new pfizerItem (
             productName.value,
             productID.value,
             manufacturer.value,
@@ -69,17 +69,22 @@ medicineForm.addEventListener('submit', (e) => {
         )
     }
    
-    Item.addProductItem(newItem);
+    pfizerItem.addProductItem(newItem);
     medicineForm.reset();
 
     console.log(pfizerItems);
     console.log(merckAndCoItems);
     console.log(abbvieItems);
+    console.log(otherItems);
 })
 
 // when clicking on the "display manufacturer" button
 
-displayManufacturerButton.addEventListener('change', ()=> {
+displayManufacturerButton.addEventListener('click', ()=> {
+    displaySelectedManufacturer(selectManufacturerOption.value);
+});
+
+displaySelectedManufacturer = () => {
     if (selectManufacturerOption.value === 'pfizer') {
         UI.activeTab = 'pfizer';
         UI.renderPfizerItems(pfizerItems);
@@ -91,12 +96,11 @@ displayManufacturerButton.addEventListener('change', ()=> {
     } else {
         UI.activeTab = 'other';
     }
-});
-
+}
 
 // DECLARE PRODUCT CLASS
 
-class Item {
+class pfizerItem {
     constructor(productName, productID, manufacturer, expirationDate, quantity) {
         this.productName = productName;
         this.productID = productID;
@@ -107,9 +111,9 @@ class Item {
     static addProductItem(item) {
         if (item.manufacturer === 'pfizer') {
             pfizerItems.push(item);
-        } else if (Item.manufacturer === 'merck-and-co'){
+        } else if (item.manufacturer === 'merck-and-co'){
             merckAndCoItems.push(item);
-        } else if (Item.manufacturer === 'abbvie') {
+        } else if (item.manufacturer === 'abbvie') {
             abbvieItems.push(item);
         } else {
             otherItems.push(item);
@@ -117,18 +121,18 @@ class Item {
     };
 };
 
-class MerckAndCoItem extends Item  {
+class MerckAndCoItem extends pfizerItem  {
     constructor(productName, productID, manufacturer, expirationDate, quantity){
         super(productName, productID, manufacturer, expirationDate, quantity);
     }
 
 }
-class AbbvieItem extends Item  {
+class AbbvieItem extends pfizerItem  {
     constructor(productName, productID, manufacturer, expirationDate, quantity){
         super(productName, productID, manufacturer, expirationDate, quantity);
     }
 }
-class OtherItem extends Item  {
+class OtherItem extends pfizerItem  {
     constructor(productName, productID, manufacturer, expirationDate, quantity){
         super(productName, productID, manufacturer, expirationDate, quantity);
     }
@@ -139,15 +143,16 @@ class OtherItem extends Item  {
 class UI {
     static activeTab = '';
 
-    static renderPfizerItems() {
+    static renderPfizerItems(pfizerItems) {
         displayPfizerContainer.style.display = "block";
         displayMerckAndCoContainer.style.display = "none";
         displayAbbvieContainer.style.display = "none";
         displayOtherContainer.style.display = "none";
 
+        pfizerUl.textContent = '';
 
         if (UI.activeTab === 'pfizer') {
-            pfizerItems.forEach((pfizerItem) => {
+            pfizerItems.forEach((pfizer) => {
                 const liRow = document.createElement('li');
                 
                 const renderedProductName = document.createElement('span');
@@ -157,13 +162,13 @@ class UI {
                 const renderedQuantity = document.createElement('span');
                 const deleteButtonContainer = document.createElement('span');
 
-                const deleteButton = document.createElement('span');
+                const deleteButton = document.createElement('button');
 
-                renderedProductName.textContent = pfizerItem.productName;
-                renderedProductID.textContent = pfizerItem.productID;
-                renderedManufacturer.textContent = pfizerItem.manufacturer;
-                renderedExpirationDate.textContent = pfizerItem.expirationDate;
-                renderedQuantity.textContent = pfizerItem.quantity;
+                renderedProductName.textContent = pfizer.productName;
+                renderedProductID.textContent = pfizer.productID;
+                renderedManufacturer.textContent = pfizer.manufacturer;
+                renderedExpirationDate.textContent = pfizer.expirationDate;
+                renderedQuantity.textContent = pfizer.quantity;
                 deleteButton.textContent = 'Delete X';
 
                 liRow.classList.add('pfizer-row');
@@ -173,7 +178,7 @@ class UI {
 
                 pfizerUl.append(liRow);
                 liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity);
-                deleteButtonContainer.append(deletebutton);
+                deleteButtonContainer.append(deleteButton);
 
             })
         }
@@ -186,7 +191,7 @@ class UI {
         displayOtherContainer.style.display = "none";
 
         if (UI.activeTab === 'merck-and-co') {
-            merckAndCoItems.forEach((merckAndCoItem) => {
+            merckAndCoItems.forEach((merckAndCo) => {
                 const liRow = document.createElement('li');
                 
                 const renderedProductName = document.createElement('span');
@@ -196,13 +201,13 @@ class UI {
                 const renderedQuantity = document.createElement('span');
                 const deleteButtonContainer = document.createElement('span');
 
-                const deleteButton = document.createElement('span');
+                const deleteButton = document.createElement('button');
 
-                renderedProductName.textContent = merckAndCoItem.productName;
-                renderedProductID.textContent = merckAndCoItem.productID;
-                renderedManufacturer.textContent = merckAndCoItem.manufacturer;
-                renderedExpirationDate.textContent = merckAndCoItem.expirationDate;
-                renderedQuantity.textContent = merckAndCoItem.quantity;
+                renderedProductName.textContent = merckAndCo.productName;
+                renderedProductID.textContent = merckAndCo.productID;
+                renderedManufacturer.textContent = merckAndCo.manufacturer;
+                renderedExpirationDate.textContent = merckAndCo.expirationDate;
+                renderedQuantity.textContent = merckAndCo.quantity;
                 deleteButton.textContent = 'Delete X';
 
                 liRow.classList.add('merck-and-co-row');
@@ -224,7 +229,7 @@ class UI {
         displayOtherContainer.style.display = "none";
 
         if (UI.activeTab === 'abbvie') {
-            abbvieItems.forEach((abbvieItem) => {
+            abbvieItems.forEach((abbvie) => {
                 const liRow = document.createElement('li');
                 
                 const renderedProductName = document.createElement('span');
@@ -234,13 +239,13 @@ class UI {
                 const renderedQuantity = document.createElement('span');
                 const deleteButtonContainer = document.createElement('span');
 
-                const deleteButton = document.createElement('span');
+                const deleteButton = document.createElement('button');
 
-                renderedProductName.textContent = abbvieItem.productName;
-                renderedProductID.textContent = abbvieItem.productID;
-                renderedManufacturer.textContent = abbvieItem.manufacturer;
-                renderedExpirationDate.textContent = abbvieItem.expirationDate;
-                renderedQuantity.textContent = abbvieItem.quantity;
+                renderedProductName.textContent = abbvie.productName;
+                renderedProductID.textContent = abbvie.productID;
+                renderedManufacturer.textContent = abbvie.manufacturer;
+                renderedExpirationDate.textContent = abbvie.expirationDate;
+                renderedQuantity.textContent = abbviabbvieeItem.quantity;
                 deleteButton.textContent = 'Delete X';
 
                 liRow.classList.add('abbvie-row');
@@ -262,7 +267,7 @@ class UI {
         displayOtherContainer.style.display = "block";
 
         if (UI.activeTab === 'other') {
-            otherItems.forEach((otherItem) => {
+            otherItems.forEach((other) => {
                 const liRow = document.createElement('li');
                 
                 const renderedProductName = document.createElement('span');
@@ -272,13 +277,13 @@ class UI {
                 const renderedQuantity = document.createElement('span');
                 const deleteButtonContainer = document.createElement('span');
 
-                const deleteButton = document.createElement('span');
+                const deleteButton = document.createElement('button');
 
-                renderedProductName.textContent = otherItem.productName;
-                renderedProductID.textContent = otherItem.productID;
-                renderedManufacturer.textContent = otherItem.manufacturer;
-                renderedExpirationDate.textContent = otherItem.expirationDate;
-                renderedQuantity.textContent = otherItem.quantity;
+                renderedProductName.textContent = other.productName;
+                renderedProductID.textContent = other.productID;
+                renderedManufacturer.textContent = other.manufacturer;
+                renderedExpirationDate.textContent = other.expirationDate;
+                renderedQuantity.textContent = other.quantity;
                 deleteButton.textContent = 'Delete X';
 
                 liRow.classList.add('other-row');

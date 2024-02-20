@@ -63,11 +63,18 @@ main {
     margin-bottom: 0.5rem;
 }
 
+.display-merck-and-co-container,
+.display-abbvie-container,
+.display-other-container {
+    display: none;
+}
+
 .pfizer-row,
 .merck-and-co-row,
 .abbvie-row,
 .other-row {
   display: flex;
+  width: 100%;
   height: 2rem;
   margin-bottom: 0.5rem;
   border-radius: 0.5rem;
