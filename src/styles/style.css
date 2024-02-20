@@ -63,7 +63,10 @@ main {
     margin-bottom: 0.5rem;
 }
 
-.pfizer-row {
+.pfizer-row,
+.merck-and-co-row,
+.abbvie-row,
+.other-row {
   display: flex;
   height: 2rem;
   margin-bottom: 0.5rem;
