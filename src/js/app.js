@@ -23,7 +23,10 @@ const merckAndCoUl = document.querySelector('.merck-and-co-list');
 const abbvieUl = document.querySelector('.abbvie-list');
 const otherUl = document.querySelector('.other-list');
 
-const submitButton = document.querySelector('.submit-button');
+const selectManufacturerOption = document.querySelector('.select-manufacturer');
+const displayManufacturerButton = document.querySelector('.display-manufacturer-button');
+
+// const submitButton = document.querySelector('.submit-button');
 
 
 // ADDING EVENT LISTENERS
@@ -73,6 +76,20 @@ medicineForm.addEventListener('submit', (e) => {
     console.log(merckAndCoItems);
     console.log(abbvieItems);
 })
+
+// when clicking on the "display manufacturer" button
+
+displayManufacturerButton.addEventListener('click', ()=> {
+    if (selectManufacturerOption.value === 'pfizer') {
+        UI.activeTab = 'pfizer';
+    } else if (selectManufacturerOption.value === 'merck-and-co') {
+        UI.activeTab = 'merck-and-co';
+    } else if (selectManufacturerOption.value === 'abbvie') {
+        UI.activeTab = 'abbvie';
+    } else {
+        UI.activeTab = 'other';
+    }
+});
 
 
 // DECLARE PRODUCT CLASS

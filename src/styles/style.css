@@ -50,13 +50,17 @@ main {
     background-color: antiquewhite;
 }
 
-.display-manufacturer-container,
-.display-product-name-container {
+.display-pfizer-header,
+.display-merck-and-co-header,
+.display-abbvie-header,
+.display-other-header {
     display: flex;
     height: 2.5rem;
+    font-weight: bold;
+    background-color: azure;
     border: 2px solid white;
     border-radius: 0.5rem;
-
+    margin-bottom: 0.5rem;
 }
 
 .pfizer-row {
