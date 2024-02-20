@@ -146,7 +146,6 @@ class UI {
         displayOtherContainer.style.display = "none";
 
 
-
         if (UI.activeTab === 'pfizer') {
             pfizerItems.forEach((pfizerItem) => {
                 const liRow = document.createElement('li');
@@ -212,6 +211,44 @@ class UI {
                 liRow.dataset.id = merckAndCo.ID;
 
                 merckAndCoUl.append(liRow);
+                liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity);
+                deleteButtonContainer.append(deletebutton);
+
+            })
+        }
+    }
+    static renderAbbvieItems() {
+        displayPfizerContainer.style.display = "none";
+        displayMerckAndCoContainer.style.display = "none";
+        displayAbbvieContainer.style.display = "block";
+        displayOtherContainer.style.display = "none";
+
+        if (UI.activeTab === 'abbvie') {
+            abbvieItems.forEach((abbvieItem) => {
+                const liRow = document.createElement('li');
+                
+                const renderedProductName = document.createElement('span');
+                const renderedProductID = document.createElement('span');
+                const renderedManufacturer = document.createElement('span');
+                const renderedExpirationDate = document.createElement('span');
+                const renderedQuantity = document.createElement('span');
+                const deleteButtonContainer = document.createElement('span');
+
+                const deleteButton = document.createElement('span');
+
+                renderedProductName.textContent = abbvieItem.productName;
+                renderedProductID.textContent = abbvieItem.productID;
+                renderedManufacturer.textContent = abbvieItem.manufacturer;
+                renderedExpirationDate.textContent = abbvieItem.expirationDate;
+                renderedQuantity.textContent = abbvieItem.quantity;
+                deleteButton.textContent = 'Delete X';
+
+                liRow.classList.add('abbvie-row');
+                deleteButton.classList.add('delete-button');
+
+                liRow.dataset.id = abbvie.ID;
+
+                abbvieUl.append(liRow);
                 liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity);
                 deleteButtonContainer.append(deletebutton);
 
