@@ -93,8 +93,10 @@ displaySelectedManufacturer = () => {
         UI.renderMerckAndCoItems(merckAndCoItems);
     } else if (selectManufacturerOption.value === 'abbvie') {
         UI.activeTab = 'abbvie';
+        UI.renderAbbvieItems(abbvieItems);
     } else {
         UI.activeTab = 'other';
+        UI.renderOtherItems(otherItems);
     }
 }
 

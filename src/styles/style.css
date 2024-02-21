@@ -102,7 +102,10 @@ main {
   background-color: darkgray;
 }
 
-.pfizer-row span {
+.pfizer-row span,
+.merck-and-co-row span,
+.abbvie-row span,
+.other-row span {
     flex-basis: 20%;
     display: flex;
     justify-content: center;
