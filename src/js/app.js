@@ -248,6 +248,11 @@ class UI {
                 liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity, deleteButtonContainer);
                 deleteButtonContainer.append(deleteButton);
 
+                deleteButton.addEventListener('click', (e)=>{
+                    const rowID = e.currentTarget.parentElement.parentElement.dataset.id
+                    PfizerItem.deleteItem(rowID, merckAndCoItems)
+                })
+
             })
         }
     }
@@ -286,6 +291,11 @@ class UI {
                 liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity, deleteButtonContainer);
                 deleteButtonContainer.append(deleteButton);
 
+                deleteButton.addEventListener('click', (e)=>{
+                    const rowID = e.currentTarget.parentElement.parentElement.dataset.id
+                    PfizerItem.deleteItem(rowID, abbvieItems)
+                })
+
             })
         }
     }
@@ -323,6 +333,11 @@ class UI {
                 otherUl.append(liRow);
                 liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity, deleteButtonContainer);
                 deleteButtonContainer.append(deleteButton);
+
+                deleteButton.addEventListener('click', (e)=>{
+                    const rowID = e.currentTarget.parentElement.parentElement.dataset.id
+                    PfizerItem.deleteItem(rowID, otherItems)
+                })
 
             })
         }
