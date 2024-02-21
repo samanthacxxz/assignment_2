@@ -124,10 +124,10 @@ class PfizerItem {
 
     // delete method
 
-    static deleteItem(id, pfizerItemsArray){
-        const index = pfizerItemsArray.findIndex(pfizer => pfizer.ID.toString() === id.toString());
+    static deleteItem(id, itemsArray){
+        const index = itemsArray.findIndex(item => item.ID.toString() === id.toString());
         if( index !== -1){
-            pfizerItemsArray.splice(index, 1);
+            itemsArray.splice(index, 1);
             if (UI.activeTab === 'pfizer'){
                 UI.renderPfizerItems(pfizerItems)
             } else if (UI.activeTab === 'merck-and-co') {
