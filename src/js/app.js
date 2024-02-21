@@ -31,6 +31,8 @@ const displayManufacturerButton = document.querySelector('.display-manufacturer-
 
 // ADDING EVENT LISTENERS
 // when clicking "register medicine" button
+
+    // create new item
 medicineForm.addEventListener('submit', (e) => {
     e.preventDefault();
     let newItem;
@@ -76,6 +78,9 @@ medicineForm.addEventListener('submit', (e) => {
     console.log(merckAndCoItems);
     console.log(abbvieItems);
     console.log(otherItems);
+
+    // convert the object as a string
+    localStorage.setItem('itemInfo', JSON.stringify(newItem));
 })
 
 // when clicking on the "display manufacturer" button
@@ -99,6 +104,7 @@ displaySelectedManufacturer = () => {
         UI.renderOtherItems(otherItems);
     }
 }
+
 
 // DECLARE PRODUCT CLASS
 
@@ -202,15 +208,18 @@ class UI {
 
                 liRow.dataset.id = pfizer.ID;
 
+                // appending
+
                 pfizerUl.append(liRow);
                 liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity, deleteButtonContainer);
                 deleteButtonContainer.append(deleteButton);
+
+                // delete button event
 
                 deleteButton.addEventListener('click', (e)=>{
                     const rowID = e.currentTarget.parentElement.parentElement.dataset.id
                     PfizerItem.deleteItem(rowID, pfizerItems)
                 })
-
             })
         }
     }
