@@ -216,7 +216,7 @@ class UI {
                 liRow.dataset.id = merckAndCo.ID;
 
                 merckAndCoUl.append(liRow);
-                liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity);
+                liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity, deleteButtonContainer);
                 deleteButtonContainer.append(deleteButton);
 
             })
@@ -254,7 +254,7 @@ class UI {
                 liRow.dataset.id = abbvie.ID;
 
                 abbvieUl.append(liRow);
-                liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity);
+                liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity, deleteButtonContainer);
                 deleteButtonContainer.append(deleteButton);
 
             })
@@ -292,7 +292,7 @@ class UI {
                 liRow.dataset.id = other.ID;
 
                 otherUl.append(liRow);
-                liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity);
+                liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity, deleteButtonContainer);
                 deleteButtonContainer.append(deleteButton);
 
             })
