@@ -36,7 +36,7 @@ medicineForm.addEventListener('submit', (e) => {
     let newItem;
     console.log(manufacturer.value);
     if (manufacturer.value === "pfizer") {
-        newItem = new pfizerItem (
+        newItem = new PfizerItem (
             productName.value,
             productID.value,
             manufacturer.value,
@@ -69,7 +69,7 @@ medicineForm.addEventListener('submit', (e) => {
         )
     }
    
-    pfizerItem.addProductItem(newItem);
+    PfizerItem.addProductItem(newItem);
     medicineForm.reset();
 
     console.log(pfizerItems);
@@ -100,13 +100,15 @@ displaySelectedManufacturer = () => {
 
 // DECLARE PRODUCT CLASS
 
-class pfizerItem {
+class PfizerItem {
     constructor(productName, productID, manufacturer, expirationDate, quantity) {
         this.productName = productName;
         this.productID = productID;
         this.manufacturer = manufacturer;
         this.expirationDate = expirationDate;
         this.quantity = quantity;
+        this.ID = Date.now();
+
     }
     static addProductItem(item) {
         if (item.manufacturer === 'pfizer') {
@@ -120,12 +122,12 @@ class pfizerItem {
         }
     };
 
-    // DELETE METHOD
+    // delete method
 
-    static deleteItem(id, itemsArray){
-        const index = itemsArray.findIndex(item => item.ID.toString() === id.toString());
+    static deleteItem(id, pfizerItemsArray){
+        const index = pfizerItemsArray.findIndex(pfizer => pfizer.ID.toString() === id.toString());
         if( index !== -1){
-            itemsArray.splice(index, 1);
+            pfizerItemsArray.splice(index, 1);
             if (UI.activeTab === 'pfizer'){
                 UI.renderPfizerItems(pfizerItems)
             } else if (UI.activeTab === 'merck-and-co') {
@@ -140,20 +142,23 @@ class pfizerItem {
 };
 
 
-class MerckAndCoItem extends pfizerItem  {
+class MerckAndCoItem extends PfizerItem  {
     constructor(productName, productID, manufacturer, expirationDate, quantity){
         super(productName, productID, manufacturer, expirationDate, quantity);
+        this.ID = Date.now();
     }
 
 }
-class AbbvieItem extends pfizerItem  {
+class AbbvieItem extends PfizerItem  {
     constructor(productName, productID, manufacturer, expirationDate, quantity){
         super(productName, productID, manufacturer, expirationDate, quantity);
+        this.ID = Date.now();
     }
 }
-class OtherItem extends pfizerItem  {
+class OtherItem extends PfizerItem  {
     constructor(productName, productID, manufacturer, expirationDate, quantity){
         super(productName, productID, manufacturer, expirationDate, quantity);
+        this.ID = Date.now();
     }
 }
 
@@ -198,6 +203,11 @@ class UI {
                 pfizerUl.append(liRow);
                 liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity, deleteButtonContainer);
                 deleteButtonContainer.append(deleteButton);
+
+                deleteButton.addEventListener('click', (e)=>{
+                    const rowID = e.currentTarget.parentElement.parentElement.dataset.id
+                    PfizerItem.deleteItem(rowID, pfizerItems)
+                })
 
             })
         }
