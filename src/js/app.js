@@ -177,7 +177,7 @@ class UI {
                 liRow.dataset.id = pfizer.ID;
 
                 pfizerUl.append(liRow);
-                liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity);
+                liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity, deleteButtonContainer);
                 deleteButtonContainer.append(deleteButton);
 
             })
