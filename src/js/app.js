@@ -119,7 +119,26 @@ class pfizerItem {
             otherItems.push(item);
         }
     };
+
+    // DELETE METHOD
+
+    static deleteItem(id, itemsArray){
+        const index = itemsArray.findIndex(item => item.ID.toString() === id.toString());
+        if( index !== -1){
+            itemsArray.splice(index, 1);
+            if (UI.activeTab === 'pfizer'){
+                UI.renderPfizerItems(pfizerItems)
+            } else if (UI.activeTab === 'merck-and-co') {
+                UI.renderMerckAndCoItems(merckAndCoItems)
+            } else if (UI.activeTab === 'abbvie') {
+                UI.renderAbbvieItems(abbvieItems)
+            } else {
+                UI.renderOtherItems(otherItems)
+            }
+        }
+      }
 };
+
 
 class MerckAndCoItem extends pfizerItem  {
     constructor(productName, productID, manufacturer, expirationDate, quantity){
@@ -208,7 +227,7 @@ class UI {
                 renderedManufacturer.textContent = merckAndCo.manufacturer;
                 renderedExpirationDate.textContent = merckAndCo.expirationDate;
                 renderedQuantity.textContent = merckAndCo.quantity;
-                deleteButton.textContent = 'Delete X';
+                deleteButton.textContent = 'Delete ❌';
 
                 liRow.classList.add('merck-and-co-row');
                 deleteButton.classList.add('delete-button');
@@ -246,7 +265,7 @@ class UI {
                 renderedManufacturer.textContent = abbvie.manufacturer;
                 renderedExpirationDate.textContent = abbvie.expirationDate;
                 renderedQuantity.textContent = abbviabbvieeItem.quantity;
-                deleteButton.textContent = 'Delete X';
+                deleteButton.textContent = 'Delete ❌';
 
                 liRow.classList.add('abbvie-row');
                 deleteButton.classList.add('delete-button');
@@ -284,7 +303,7 @@ class UI {
                 renderedManufacturer.textContent = other.manufacturer;
                 renderedExpirationDate.textContent = other.expirationDate;
                 renderedQuantity.textContent = other.quantity;
-                deleteButton.textContent = 'Delete X';
+                deleteButton.textContent = 'Delete ❌';
 
                 liRow.classList.add('other-row');
                 deleteButton.classList.add('delete-button');
