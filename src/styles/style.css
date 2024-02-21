@@ -62,17 +62,22 @@ main {
     width: 50rem;
     height: 2.5rem;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: var(--spacing-medium);
-    padding: var(--spacing-medium);
 
     font-weight: bold;
     background-color: azure;
     border: 2px solid white;
     border-radius: 0.5rem;
     margin-bottom: 0.5rem;
+}
+
+.display-pfizer-header span,
+.display-abbvie-header span,
+.display-merck-and-co-header span,
+.display-other-header span {
+    flex-basis: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .display-pfizer-container {
@@ -91,7 +96,6 @@ main {
 .abbvie-row,
 .other-row {
   display: flex;
-  width: 100%;
   height: 2rem;
   margin-bottom: 0.5rem;
   border-radius: 0.5rem;
@@ -112,5 +116,4 @@ main {
     cursor: pointer;
     border-radius: 0.25rem;
     border: none;
-    background-color: brown;
   }
