@@ -169,7 +169,7 @@ class UI {
                 renderedManufacturer.textContent = pfizer.manufacturer;
                 renderedExpirationDate.textContent = pfizer.expirationDate;
                 renderedQuantity.textContent = pfizer.quantity;
-                deleteButton.textContent = 'Delete X';
+                deleteButton.textContent = 'Delete ❌';
 
                 liRow.classList.add('pfizer-row');
                 deleteButton.classList.add('delete-button');
