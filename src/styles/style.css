@@ -59,8 +59,15 @@ main {
 .display-merck-and-co-header,
 .display-abbvie-header,
 .display-other-header {
-    display: flex;
+    width: 50rem;
     height: 2.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-medium);
+    padding: var(--spacing-medium);
+
     font-weight: bold;
     background-color: azure;
     border: 2px solid white;
