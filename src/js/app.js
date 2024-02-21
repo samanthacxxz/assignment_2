@@ -221,6 +221,8 @@ class UI {
         displayAbbvieContainer.style.display = "none";
         displayOtherContainer.style.display = "none";
 
+        merckAndCoUl.textContent = '';
+
         if (UI.activeTab === 'merck-and-co') {
             merckAndCoItems.forEach((merckAndCo) => {
                 const liRow = document.createElement('li');
@@ -264,6 +266,8 @@ class UI {
         displayAbbvieContainer.style.display = "block";
         displayOtherContainer.style.display = "none";
 
+        abbvieUl.textContent = '';
+
         if (UI.activeTab === 'abbvie') {
             abbvieItems.forEach((abbvie) => {
                 const liRow = document.createElement('li');
@@ -306,6 +310,8 @@ class UI {
         displayMerckAndCoContainer.style.display = "none";
         displayAbbvieContainer.style.display = "none";
         displayOtherContainer.style.display = "block";
+
+        otherUl.textContent = '';
 
         if (UI.activeTab === 'other') {
             otherItems.forEach((other) => {
