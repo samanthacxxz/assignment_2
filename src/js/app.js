@@ -26,7 +26,6 @@ const otherUl = document.querySelector('.other-list');
 const selectManufacturerOption = document.querySelector('.select-manufacturer');
 const displayManufacturerButton = document.querySelector('.display-manufacturer-button');
 
-// const submitButton = document.querySelector('.submit-button');
 
 // GETTING THE DATA FROM LOCAL STORAGE WHEN THE PAGE IS RELOADED
 
@@ -176,6 +175,11 @@ class PfizerItem {
                 UI.renderOtherItems(otherItems)
             }
         }
+        // Update local storage
+        localStorage.setItem('pfizerItems', JSON.stringify(pfizerItems));
+        localStorage.setItem('merckAndCoItems', JSON.stringify(merckAndCoItems));
+        localStorage.setItem('abbvieItems', JSON.stringify(abbvieItems));
+        localStorage.setItem('otherItems', JSON.stringify(otherItems));
     }
 };
 
@@ -205,7 +209,7 @@ class OtherItem extends PfizerItem  {
 class UI {
     static activeTab = '';
 
-    static renderPfizerItems(pfizerItems) {
+    static renderPfizerItems() {
         displayPfizerContainer.style.display = "block";
         displayMerckAndCoContainer.style.display = "none";
         displayAbbvieContainer.style.display = "none";
@@ -247,10 +251,8 @@ class UI {
                 // delete button event
 
                 deleteButton.addEventListener('click', (e)=>{
-                    e.preventDefault();
                     const rowID = e.currentTarget.parentElement.parentElement.dataset.id
                     PfizerItem.deleteItem(rowID, pfizerItems)
-                    localStorage.removeItem('pfizerItems');
                 })
             })
         }
