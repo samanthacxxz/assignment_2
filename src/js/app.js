@@ -30,17 +30,32 @@ const displayManufacturerButton = document.querySelector('.display-manufacturer-
 
 // GETTING THE DATA FROM LOCAL STORAGE WHEN THE PAGE IS RELOADED
 
-const items = JSON.parse(localStorage.getItem('itemInfo')) || [];
+const retrievedPfizerItems = JSON.parse(localStorage.getItem('pfizerItems')) || [];
+const retrievedMerckAndCoItems = JSON.parse(localStorage.getItem('merckAndCoItems')) || [];
+const retrievedAbbvieItems = JSON.parse(localStorage.getItem('abbvieItems')) || [];
+const retrievedOtherItems = JSON.parse(localStorage.getItem('OtherItems')) || [];
+
 document.addEventListener('DOMContentLoaded', () => {
-renderData(items);
+    retrievedPfizerItems.forEach((item) => {
+        pfizerItems.push(item);
+    });
+    console.log(pfizerItems);
+
+    retrievedMerckAndCoItems.forEach((item) => {
+        merckAndCoItems.push(item);
+    })
+    console.log(merckAndCoItems);
+
+    retrievedAbbvieItems.forEach((item) => {
+        abbvieItems.push(item);
+    })
+    console.log(abbvieItems);
+
+    retrievedOtherItems.forEach((item) => {
+        otherItems.push(item);
+    })
+    console.log(otherItems);
 });
-
-// SAVING DATA TO LOCAL STORAGE
-
-const saveItemData = (itemData) => {
-    localStorage.setItem('itemInfo', JSON.stringify(itemData));
-}
-
 // ADDING EVENT LISTENERS
 // when clicking "register medicine" button
 
@@ -91,7 +106,11 @@ medicineForm.addEventListener('submit', (e) => {
     console.log(abbvieItems);
     console.log(otherItems);
 
-    saveData(newItem);
+    localStorage.setItem('pfizerItems', JSON.stringify(pfizerItems));
+    localStorage.setItem('merckAndCoItems', JSON.stringify(merckAndCoItems));
+    localStorage.setItem('abbvieItems', JSON.stringify(abbvieItems));
+    localStorage.setItem('otherItems', JSON.stringify(otherItems));
+
 })
 
 // when clicking on the "display manufacturer" button
