@@ -324,7 +324,7 @@ class UI {
                 renderedProductID.textContent = abbvie.productID;
                 renderedManufacturer.textContent = abbvie.manufacturer;
                 renderedExpirationDate.textContent = abbvie.expirationDate;
-                renderedQuantity.textContent = abbviabbvieeItem.quantity;
+                renderedQuantity.textContent = abbvie.quantity;
                 deleteButton.textContent = 'Delete ❌';
 
                 liRow.classList.add('abbvie-row');
