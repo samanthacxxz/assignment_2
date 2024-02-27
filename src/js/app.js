@@ -35,7 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
 renderData(items);
 });
 
-// 
+// SAVING DATA TO LOCAL STORAGE
+
+const saveItemData = (itemData) => {
+    localStorage.setItem('itemInfo', JSON.stringify(itemData));
+}
 
 // ADDING EVENT LISTENERS
 // when clicking "register medicine" button
@@ -87,8 +91,7 @@ medicineForm.addEventListener('submit', (e) => {
     console.log(abbvieItems);
     console.log(otherItems);
 
-    // convert the object as a string
-    localStorage.setItem('itemInfo', JSON.stringify(newItem));
+    saveData(newItem);
 })
 
 // when clicking on the "display manufacturer" button
