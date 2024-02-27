@@ -164,7 +164,7 @@ class PfizerItem {
 
     static deleteItem(id, itemsArray){
         const index = itemsArray.findIndex(item => item.ID.toString() === id.toString());
-        if( index !== -1){
+        if(index !== -1){
             itemsArray.splice(index, 1);
             if (UI.activeTab === 'pfizer'){
                 UI.renderPfizerItems(pfizerItems)
@@ -176,7 +176,7 @@ class PfizerItem {
                 UI.renderOtherItems(otherItems)
             }
         }
-      }
+    }
 };
 
 
@@ -247,8 +247,10 @@ class UI {
                 // delete button event
 
                 deleteButton.addEventListener('click', (e)=>{
+                    e.preventDefault();
                     const rowID = e.currentTarget.parentElement.parentElement.dataset.id
                     PfizerItem.deleteItem(rowID, pfizerItems)
+                    localStorage.removeItem('pfizerItems');
                 })
             })
         }
