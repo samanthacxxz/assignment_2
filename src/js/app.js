@@ -55,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     })
     console.log(otherItems);
 });
+
 // ADDING EVENT LISTENERS
 // when clicking "register medicine" button
 
@@ -160,7 +161,6 @@ class PfizerItem {
     };
 
     // delete method
-
     static deleteItem(id, itemsArray){
         const index = itemsArray.findIndex(item => item.ID.toString() === id.toString());
         if(index !== -1){
