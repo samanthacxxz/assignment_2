@@ -28,6 +28,14 @@ const displayManufacturerButton = document.querySelector('.display-manufacturer-
 
 // const submitButton = document.querySelector('.submit-button');
 
+// GETTING THE DATA FROM LOCAL STORAGE WHEN THE PAGE IS RELOADED
+
+const items = JSON.parse(localStorage.getItem('itemInfo')) || [];
+document.addEventListener('DOMContentLoaded', () => {
+renderData(items);
+});
+
+// 
 
 // ADDING EVENT LISTENERS
 // when clicking "register medicine" button
