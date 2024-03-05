@@ -2,17 +2,25 @@ body {
     background-color: var(--color-primary);
 }
 
+/* stylings for header (just the title) */
 .header-container {
     width: 100%;
     height: 15vh;
 
-    background-color: var(--color-secondary);
+    background-color: var(--color-accent-1);
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding-left: 1rem;
 }
 
 main {
     display: flex;
 }
 
+/* stylings for the medicine form on the left side of page */
 .medicine-form {
     width: 20%;
     height: 85vh;
@@ -25,6 +33,11 @@ main {
     background-color: var(--color-tertiary);
 }
 
+h2 {
+    font-family: 'Raleway-Bold';
+}
+
+/* styling for the display section on the right side of the page */
 .medicine-display {
     width: 80%;
     height: 85vh;
@@ -36,6 +49,7 @@ main {
     gap: var(--spacing-medium);
 }
 
+/* select option for manufacturers in the medicine form */
 .select-manufacturer-section {
     width: 100%;
     height: 10vh;
@@ -45,7 +59,7 @@ main {
     justify-content: center;
     align-items: center;
     gap: var(--spacing-small);
-    background-color: brown;
+    background-color: var(--color-accent-2);
  
 }
 
