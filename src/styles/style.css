@@ -63,12 +63,13 @@ h2 {
  
 }
 
-
+/* the area where the products are rendered and displayed */
 .render-medicine-container {
     display: flex;
     flex-direction: column;
 }
 
+/* header for each product manufacturer class/category */
 .display-pfizer-header,
 .display-merck-and-co-header,
 .display-abbvie-header,
@@ -124,6 +125,26 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+
+/* button styles */ 
+.submit-button {
+    width: 10rem;
+    height: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    border: none;
+}
+
+.display-manufacturer-button {
+    width: 12rem;
+    height: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 0.25rem;
+    border: none;
 }
 
 .delete-button {
