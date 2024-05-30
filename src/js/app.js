@@ -8,7 +8,6 @@ const otherItems = [];
 const medicineForm = document.querySelector('.medicine-form');
 
 const productName = document.querySelector('.product-name');
-const productID = document.querySelector('.product-id');
 const manufacturer = document.querySelector('.manufacturer');
 const expirationDate = document.querySelector('.expiration-date');
 const quantity = document.querySelector('.quantity');
@@ -67,7 +66,6 @@ medicineForm.addEventListener('submit', (e) => {
     if (manufacturer.value === "pfizer") {
         newItem = new PfizerItem (
             productName.value,
-            productID.value,
             manufacturer.value,
             expirationDate.value,
             quantity.value
@@ -75,7 +73,6 @@ medicineForm.addEventListener('submit', (e) => {
     } else if (manufacturer.value === "merck-and-co"){
         newItem = new MerckAndCoItem (
             productName.value,
-            productID.value,
             manufacturer.value,
             expirationDate.value,
             quantity.value
@@ -83,7 +80,6 @@ medicineForm.addEventListener('submit', (e) => {
     } else if (manufacturer.value === "abbvie"){
         newItem =  new AbbvieItem (
             productName.value,
-            productID.value,
             manufacturer.value,
             expirationDate.value,
             quantity.value
@@ -91,7 +87,6 @@ medicineForm.addEventListener('submit', (e) => {
     } else {
         newItem =  new OtherItem (
             productName.value,
-            productID.value,
             manufacturer.value,
             expirationDate.value,
             quantity.value
@@ -141,7 +136,6 @@ displaySelectedManufacturer = () => {
 class PfizerItem {
     constructor(productName, productID, manufacturer, expirationDate, quantity) {
         this.productName = productName;
-        this.productID = productID;
         this.manufacturer = manufacturer;
         this.expirationDate = expirationDate;
         this.quantity = quantity;
@@ -185,21 +179,21 @@ class PfizerItem {
 
 
 class MerckAndCoItem extends PfizerItem  {
-    constructor(productName, productID, manufacturer, expirationDate, quantity){
-        super(productName, productID, manufacturer, expirationDate, quantity);
+    constructor(productName, manufacturer, expirationDate, quantity){
+        super(productName, manufacturer, expirationDate, quantity);
         this.ID = Date.now();
     }
 
 }
 class AbbvieItem extends PfizerItem  {
-    constructor(productName, productID, manufacturer, expirationDate, quantity){
-        super(productName, productID, manufacturer, expirationDate, quantity);
+    constructor(productName, manufacturer, expirationDate, quantity){
+        super(productName, manufacturer, expirationDate, quantity);
         this.ID = Date.now();
     }
 }
 class OtherItem extends PfizerItem  {
-    constructor(productName, productID, manufacturer, expirationDate, quantity){
-        super(productName, productID, manufacturer, expirationDate, quantity);
+    constructor(productName, manufacturer, expirationDate, quantity){
+        super(productName, manufacturer, expirationDate, quantity);
         this.ID = Date.now();
     }
 }
@@ -222,7 +216,6 @@ class UI {
                 const liRow = document.createElement('li');
                 
                 const renderedProductName = document.createElement('span');
-                const renderedProductID = document.createElement('span');
                 const renderedManufacturer = document.createElement('span');
                 const renderedExpirationDate = document.createElement('span');
                 const renderedQuantity = document.createElement('span');
@@ -231,7 +224,6 @@ class UI {
                 const deleteButton = document.createElement('button');
 
                 renderedProductName.textContent = pfizer.productName;
-                renderedProductID.textContent = pfizer.productID;
                 renderedManufacturer.textContent = pfizer.manufacturer;
                 renderedExpirationDate.textContent = pfizer.expirationDate;
                 renderedQuantity.textContent = pfizer.quantity;
@@ -245,7 +237,7 @@ class UI {
                 // appending
 
                 pfizerUl.append(liRow);
-                liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity, deleteButtonContainer);
+                liRow.append(renderedProductName, renderedManufacturer, renderedExpirationDate, renderedQuantity, deleteButtonContainer);
                 deleteButtonContainer.append(deleteButton);
 
                 // delete button event
@@ -271,7 +263,6 @@ class UI {
                 const liRow = document.createElement('li');
                 
                 const renderedProductName = document.createElement('span');
-                const renderedProductID = document.createElement('span');
                 const renderedManufacturer = document.createElement('span');
                 const renderedExpirationDate = document.createElement('span');
                 const renderedQuantity = document.createElement('span');
@@ -280,7 +271,6 @@ class UI {
                 const deleteButton = document.createElement('button');
 
                 renderedProductName.textContent = merckAndCo.productName;
-                renderedProductID.textContent = merckAndCo.productID;
                 renderedManufacturer.textContent = merckAndCo.manufacturer;
                 renderedExpirationDate.textContent = merckAndCo.expirationDate;
                 renderedQuantity.textContent = merckAndCo.quantity;
@@ -292,7 +282,7 @@ class UI {
                 liRow.dataset.id = merckAndCo.ID;
 
                 merckAndCoUl.append(liRow);
-                liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity, deleteButtonContainer);
+                liRow.append(renderedProductName, renderedManufacturer, renderedExpirationDate, renderedQuantity, deleteButtonContainer);
                 deleteButtonContainer.append(deleteButton);
 
                 deleteButton.addEventListener('click', (e)=>{
@@ -316,7 +306,6 @@ class UI {
                 const liRow = document.createElement('li');
                 
                 const renderedProductName = document.createElement('span');
-                const renderedProductID = document.createElement('span');
                 const renderedManufacturer = document.createElement('span');
                 const renderedExpirationDate = document.createElement('span');
                 const renderedQuantity = document.createElement('span');
@@ -325,7 +314,6 @@ class UI {
                 const deleteButton = document.createElement('button');
 
                 renderedProductName.textContent = abbvie.productName;
-                renderedProductID.textContent = abbvie.productID;
                 renderedManufacturer.textContent = abbvie.manufacturer;
                 renderedExpirationDate.textContent = abbvie.expirationDate;
                 renderedQuantity.textContent = abbvie.quantity;
@@ -337,7 +325,7 @@ class UI {
                 liRow.dataset.id = abbvie.ID;
 
                 abbvieUl.append(liRow);
-                liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity, deleteButtonContainer);
+                liRow.append(renderedProductName, renderedManufacturer, renderedExpirationDate, renderedQuantity, deleteButtonContainer);
                 deleteButtonContainer.append(deleteButton);
 
                 deleteButton.addEventListener('click', (e)=>{
@@ -361,7 +349,6 @@ class UI {
                 const liRow = document.createElement('li');
                 
                 const renderedProductName = document.createElement('span');
-                const renderedProductID = document.createElement('span');
                 const renderedManufacturer = document.createElement('span');
                 const renderedExpirationDate = document.createElement('span');
                 const renderedQuantity = document.createElement('span');
@@ -370,7 +357,6 @@ class UI {
                 const deleteButton = document.createElement('button');
 
                 renderedProductName.textContent = other.productName;
-                renderedProductID.textContent = other.productID;
                 renderedManufacturer.textContent = other.manufacturer;
                 renderedExpirationDate.textContent = other.expirationDate;
                 renderedQuantity.textContent = other.quantity;
@@ -382,7 +368,7 @@ class UI {
                 liRow.dataset.id = other.ID;
 
                 otherUl.append(liRow);
-                liRow.append(renderedProductName, renderedProductID, renderedManufacturer, renderedExpirationDate, renderedQuantity, deleteButtonContainer);
+                liRow.append(renderedProductName, renderedManufacturer, renderedExpirationDate, renderedQuantity, deleteButtonContainer);
                 deleteButtonContainer.append(deleteButton);
 
                 deleteButton.addEventListener('click', (e)=>{
