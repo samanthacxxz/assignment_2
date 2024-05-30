@@ -31,7 +31,7 @@ const displayManufacturerButton = document.querySelector('.display-manufacturer-
 const retrievedPfizerItems = JSON.parse(localStorage.getItem('pfizerItems')) || [];
 const retrievedMerckAndCoItems = JSON.parse(localStorage.getItem('merckAndCoItems')) || [];
 const retrievedAbbvieItems = JSON.parse(localStorage.getItem('abbvieItems')) || [];
-const retrievedOtherItems = JSON.parse(localStorage.getItem('OtherItems')) || [];
+const retrievedOtherItems = JSON.parse(localStorage.getItem('otherItems')) || [];
 
 document.addEventListener('DOMContentLoaded', () => {
     retrievedPfizerItems.forEach((item) => {
@@ -134,7 +134,7 @@ displaySelectedManufacturer = () => {
 // DECLARE PRODUCT CLASS
 
 class PfizerItem {
-    constructor(productName, productID, manufacturer, expirationDate, quantity) {
+    constructor(productName, manufacturer, expirationDate, quantity) {
         this.productName = productName;
         this.manufacturer = manufacturer;
         this.expirationDate = expirationDate;
